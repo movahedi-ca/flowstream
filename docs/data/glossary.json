@@ -1,0 +1,115 @@
+{
+  "profiles": ["general", "culinary", "music", "sports", "finance"],
+  "terms": [
+    {
+      "term": "dictionary",
+      "definition": "A Python mapping that stores data as key–value pairs so you can look values up by key.",
+      "analogies": {
+        "general": "Like a contacts list on your phone: you look up a name and instantly get the number.",
+        "culinary": "Like a mise en place chart: each labeled container (the key) holds exactly one prepped ingredient (the value).",
+        "music": "Like a set list taped to the stage floor: each song title (the key) maps to its starting tempo and key signature (the value).",
+        "sports": "Like a team roster sheet: each jersey number (the key) maps to the player wearing it (the value).",
+        "finance": "Like a portfolio ledger: each ticker symbol (the key) maps to the number of shares you hold (the value)."
+      }
+    },
+    {
+      "term": "key",
+      "definition": "The unique label you use to store and retrieve a value in a dictionary.",
+      "analogies": {
+        "general": "The name tag on a coat-check ticket — it tells the attendant exactly which coat is yours.",
+        "culinary": "The label on a spice jar — 'paprika' tells you which jar to grab without opening every one.",
+        "music": "The track number on a set list — 'track 4' tells the sound engineer which song is coming next.",
+        "sports": "A player's jersey number — the announcer says 'number 23' and everyone knows who has the ball.",
+        "finance": "A stock ticker like AAPL — the short code your broker uses to identify exactly which company you mean."
+      }
+    },
+    {
+      "term": "value",
+      "definition": "The data stored in a dictionary under a given key.",
+      "analogies": {
+        "general": "The coat itself hanging on the rack behind the coat-check ticket.",
+        "culinary": "The actual paprika inside the labeled spice jar.",
+        "music": "The song that plays when the DJ cues up track 4.",
+        "sports": "The player wearing jersey number 23 — the person the number points to.",
+        "finance": "Your actual share count or dollar position sitting behind the ticker symbol."
+      }
+    },
+    {
+      "term": "KeyError",
+      "definition": "The exception Python raises when you look up a key a dictionary does not contain.",
+      "analogies": {
+        "general": "Asking the coat check for a ticket number that was never issued — they cannot hand you a coat that is not there.",
+        "culinary": "Reaching for the 'saffron' jar on a rack that has no saffron — the recipe step fails loudly instead of guessing.",
+        "music": "Calling for track 14 on a 12-track album — the player errors out instead of playing a random song.",
+        "sports": "The referee calling a foul on jersey number 99 when the roster only goes to 55 — the call is invalid.",
+        "finance": "Quoting a ticker that is not listed on the exchange — your broker rejects the order rather than buying something random."
+      }
+    },
+    {
+      "term": "comprehension",
+      "definition": "A compact one-line expression that builds a dictionary, list, or set from an iterable.",
+      "analogies": {
+        "general": "A meal-prep assembly line: raw ingredients go in one end, finished lunch boxes come out the other, with no separate steps.",
+        "culinary": "A single-pass pastry sheeter: dough goes in and comes out rolled, cut, and portioned in one motion.",
+        "music": "A loop pedal: one recorded phrase becomes a full layered arrangement in a single take.",
+        "sports": "A fast break: steal, pass, and score condensed into one fluid motion instead of three separate plays.",
+        "finance": "A batch trade ticket: one instruction that executes a whole list of orders at once instead of placing them one by one."
+      }
+    },
+    {
+      "term": "JSON",
+      "definition": "A lightweight text format for exchanging data, whose objects mirror Python dictionaries.",
+      "analogies": {
+        "general": "A universal packing slip: any warehouse in the world can read it, whatever language the staff speaks.",
+        "culinary": "A standardized recipe card: ingredients and quantities written so any kitchen can reproduce the dish.",
+        "music": "Standard music notation: a score written in Nashville can be sight-read by a band in Tokyo.",
+        "sports": "A box score: wins, points, and stats recorded in a format every fan and analyst understands.",
+        "finance": "A SWIFT message: banks worldwide exchange payment details in one agreed format so money moves correctly."
+      }
+    },
+    {
+      "term": "hashable",
+      "definition": "A property of immutable types like strings and numbers that allows Python to use them as dictionary keys.",
+      "analogies": {
+        "general": "A laminated ID badge: it never changes, so the scanner always recognizes it.",
+        "culinary": "A stamped metal measuring cup: its size is fixed forever, so every recipe trusts it.",
+        "music": "A tuned piano key: middle C is always middle C, so sheet music can rely on it.",
+        "sports": "A retired jersey number hanging in the rafters — it will always mean that one player.",
+        "finance": "A CUSIP number: a fixed identifier for a security that never changes, so trades always settle to the right asset."
+      }
+    },
+    {
+      "term": "mutable",
+      "definition": "Changeable in place: a mutable object like a dictionary can be updated without creating a new one.",
+      "analogies": {
+        "general": "A whiteboard: you can erase and rewrite entries without buying a new board.",
+        "culinary": "A simmering soup: you can keep adjusting the seasoning in the same pot.",
+        "music": "A live mix on the soundboard: the engineer tweaks levels mid-song without stopping the show.",
+        "sports": "A coach's whiteboard at halftime: the game plan gets redrawn on the same board for the second half.",
+        "finance": "A working spreadsheet model: you update the assumptions in place and the totals recalculate."
+      }
+    },
+    {
+      "term": "iteration",
+      "definition": "Stepping through the items of a collection one at a time, usually with a for loop.",
+      "analogies": {
+        "general": "Flipping through a photo album page by page instead of dumping all the photos on the floor.",
+        "culinary": "Tasting each dish in a tasting menu course by course, in order.",
+        "music": "Running down a set list song by song during soundcheck.",
+        "sports": "Reviewing game film play by play with the team.",
+        "finance": "Reconciling a bank statement line by line against your receipts."
+      }
+    },
+    {
+      "term": "API",
+      "definition": "An interface that lets one program request data or actions from another program.",
+      "analogies": {
+        "general": "A drive-through speaker: you place an order through the window and food comes back — you never enter the kitchen.",
+        "culinary": "Ordering from the pass: the server calls out a ticket and the kitchen returns plated dishes — the server never cooks.",
+        "music": "A session-player request: you send a chart and get back a recorded bassline — you never played it yourself.",
+        "sports": "Calling a play from the sideline: the coach signals in and the team executes — the coach never takes the snap.",
+        "finance": "A brokerage order ticket: you submit 'buy 10 shares' and the broker executes on the exchange — you never touch the trading floor."
+      }
+    }
+  ]
+}
