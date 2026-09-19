@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="FlowStream social card">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0b1220"/>
+      <stop offset="1" stop-color="#111c33"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#38bdf8"/>
+      <stop offset="1" stop-color="#818cf8"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- play glyph -->
+  <circle cx="150" cy="315" r="64" fill="none" stroke="url(#accent)" stroke-width="10"/>
+  <path d="M138 275 L185 315 L138 355 Z" fill="url(#accent)"/>
+
+  <!-- wordmark -->
+  <text x="245" y="345" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif"
+        font-size="96" font-weight="700" fill="#f1f5f9" letter-spacing="-2">FlowStream</text>
+
+  <!-- tagline -->
+  <text x="245" y="420" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif"
+        font-size="40" font-weight="400" fill="#94a3b8">Time well spent, not watch time.</text>
+
+  <!-- note -->
+  <text x="245" y="500" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif"
+        font-size="28" font-weight="400" fill="#64748b" letter-spacing="2">OPEN-SOURCE &#183; DEMO INSIDE</text>
+
+  <rect x="0" y="614" width="1200" height="16" fill="url(#accent)"/>
+</svg>
