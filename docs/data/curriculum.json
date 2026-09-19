@@ -1,0 +1,288 @@
+{
+  "curriculum": {
+    "id": "python-dicts-45",
+    "title": "Python Dictionaries in 45 Minutes",
+    "tagline": "From key-value basics to real data pipelines — no fluff.",
+    "sampleNotice": "SAMPLE CURRICULUM: lesson video is openly-licensed CC0 stock footage standing in for real instruction; transcripts, quizzes, chapters and instructor personas are illustrative examples, not real people.",
+    "focusWindowMinutes": 45,
+    "lessons": [
+      {
+        "id": "l1",
+        "order": 1,
+        "title": "What is a dictionary?",
+        "skill": "Define and create Python dicts",
+        "creatorName": "Sam Rivera (sample persona)",
+        "creatorCredentials": "Python educator · 8 yrs teaching (illustrative)",
+        "durationSec": 480,
+        "videoUrl": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+        "videoLicense": "CC0 stock footage (MDN) — placeholder for real lesson video",
+        "pacing": "quick",
+        "actionDensity": 6.1,
+        "efficacySeed": {"quizAttempts": 214, "quizPasses": 181, "deliverables": 132},
+        "chapters": [
+          {"start": 0, "end": 25, "title": "Channel intro", "kind": "intro", "fluff": true},
+          {"start": 25, "end": 120, "title": "Key-value mental model", "kind": "instruction", "fluff": false},
+          {"start": 120, "end": 170, "title": "Sponsor message", "kind": "sponsor", "fluff": true},
+          {"start": 170, "end": 420, "title": "Creating and reading dicts", "kind": "instruction", "fluff": false},
+          {"start": 420, "end": 480, "title": "Like and subscribe CTA", "kind": "cta", "fluff": true}
+        ],
+        "transcript": [
+          {"start": 25, "end": 40, "text": "A dictionary maps keys to values, like a real dictionary maps words to definitions."},
+          {"start": 40, "end": 56, "text": "In Python you write one with curly braces: profile = {'name': 'Ada', 'age': 36}."},
+          {"start": 56, "end": 73, "text": "Each entry pairs a key with a value. The key is the label you look up; the value is the data you get back."},
+          {"start": 73, "end": 91, "text": "You read a value by indexing with its key: profile['name'] gives you 'Ada'."},
+          {"start": 91, "end": 108, "text": "Keys must be unique inside a dictionary. A second entry with the same key overwrites the first."},
+          {"start": 108, "end": 120, "text": "Keep keys simple and readable — short string keys make a dictionary easy to scan."},
+          {"start": 170, "end": 190, "text": "Let's build a contacts dictionary: contacts = {'Sam': '555-0142', 'Jo': '555-9871'}."},
+          {"start": 190, "end": 206, "text": "Indexing works the same way: contacts['Jo'] returns the phone number for Jo."},
+          {"start": 206, "end": 226, "text": "Ask for a missing key and Python raises a KeyError, which stops your program unless you handle it."},
+          {"start": 226, "end": 246, "text": "To avoid the crash, call contacts.get('Zed'), which returns None for a missing key instead of raising a KeyError."},
+          {"start": 246, "end": 266, "text": "You can even supply a default: contacts.get('Zed', 'unknown') returns the string 'unknown'."},
+          {"start": 266, "end": 290, "text": "Dictionaries are mutable, so you can add entries later: contacts['Ray'] = '555-3344' just works."},
+          {"start": 290, "end": 318, "text": "Remember the contract: keys are the addresses, values are the residents, and a missing address raises a KeyError."},
+          {"start": 318, "end": 348, "text": "Next up, we will learn how to read and update entries safely without tripping over missing keys."}
+        ],
+        "recallTriggers": [
+          {"at": 200, "prompt": "Before I run this — what do you think d['missing'] returns?", "reveal": "It raises a KeyError. d.get('missing') would return None instead."}
+        ],
+        "quiz": [
+          {"question": "Which of these creates a valid Python dictionary?", "options": ["d = ['a', 1]", "d = {'a': 1}", "d = ('a': 1)", "d = <'a': 1>"], "answer": 1, "explanation": "Dictionaries use curly braces with key: value pairs, so {'a': 1} is the valid literal."},
+          {"question": "What happens when you index a key the dictionary does not contain?", "options": ["It returns None", "It returns an empty dict", "It raises a KeyError", "It returns 0"], "answer": 2, "explanation": "Bracket indexing on a missing key raises a KeyError; use .get() if you want None instead."},
+          {"question": "What does d.get('missing', 'n/a') return when 'missing' is not a key?", "options": ["None", "It raises a KeyError", "'n/a'", "An empty string"], "answer": 2, "explanation": ".get() returns the supplied default — here 'n/a' — instead of raising a KeyError."}
+        ],
+        "flashcards": [
+          {"front": "dict literal syntax", "back": "{'key': value}"},
+          {"front": "key", "back": "The unique lookup label in a dictionary entry"},
+          {"front": "value", "back": "The data stored in a dictionary under a key"},
+          {"front": "KeyError", "back": "Raised when you index a dictionary with a missing key"}
+        ],
+        "deliverable": "Build a dict mapping 5 countries to capitals and print one value."
+      },
+      {
+        "id": "l2",
+        "order": 2,
+        "title": "Reading and updating dicts",
+        "skill": "Read safely and mutate dict entries",
+        "creatorName": "Priya Nair (sample persona)",
+        "creatorCredentials": "Backend engineer · Python for data teams (illustrative)",
+        "durationSec": 540,
+        "videoUrl": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+        "videoLicense": "CC0 stock footage (MDN) — placeholder for real lesson video",
+        "pacing": "balanced",
+        "actionDensity": 5.2,
+        "efficacySeed": {"quizAttempts": 189, "quizPasses": 164, "deliverables": 121},
+        "chapters": [
+          {"start": 0, "end": 20, "title": "Recap and intro", "kind": "intro", "fluff": true},
+          {"start": 20, "end": 150, "title": "Reading safely with .get()", "kind": "instruction", "fluff": false},
+          {"start": 150, "end": 190, "title": "Sponsor message", "kind": "sponsor", "fluff": true},
+          {"start": 190, "end": 440, "title": "Updating and deleting entries", "kind": "instruction", "fluff": false},
+          {"start": 440, "end": 540, "title": "Wrap-up and next lesson", "kind": "outro", "fluff": true}
+        ],
+        "transcript": [
+          {"start": 20, "end": 38, "text": "Reading from a dictionary is easy when the key exists: config['theme'] hands you the value."},
+          {"start": 38, "end": 58, "text": "The safe habit is .get(). config.get('theme') returns the value, or None when the key is missing."},
+          {"start": 58, "end": 78, "text": "You can pass a fallback: config.get('theme', 'light') returns 'light' instead of None."},
+          {"start": 78, "end": 98, "text": "Use .get() whenever the key might not exist — user input, API data, anything you did not build yourself."},
+          {"start": 98, "end": 120, "text": "One caution: .get() only skips missing keys. A key that actually holds None still returns None, which is correct."},
+          {"start": 120, "end": 150, "text": "Rule of thumb: bracket indexing for keys you control, .get() for keys you don't."},
+          {"start": 190, "end": 215, "text": "Dictionaries are mutable, so updating is just assignment: scores['quiz1'] = 92 adds or replaces an entry."},
+          {"start": 215, "end": 240, "text": "The .update() method merges another dictionary in: scores.update({'quiz2': 88, 'quiz3': 95})."},
+          {"start": 240, "end": 265, "text": "Watch out: .update() overwrites values for keys that already exist. That is usually exactly what you want."},
+          {"start": 265, "end": 290, "text": ".setdefault() fills in a key only if it is missing: counts.setdefault('apples', 0) leaves existing counts alone."},
+          {"start": 290, "end": 315, "text": "To remove an entry, use del scores['quiz1'] — but a missing key raises a KeyError, just like indexing does."},
+          {"start": 315, "end": 340, "text": "The safer removal is scores.pop('quiz1', None), which deletes the key or returns None if it is absent."},
+          {"start": 340, "end": 368, "text": "Prefer .pop() with a default over del when you are not sure the key is there."},
+          {"start": 368, "end": 396, "text": "And len(scores) tells you how many key-value pairs you are working with."},
+          {"start": 396, "end": 440, "text": "You now have a full read-write toolkit: get, setdefault, update, pop — and you know when each one is safe."}
+        ],
+        "recallTriggers": [
+          {"at": 60, "prompt": "Pause — config has no 'theme' key. What does config['theme'] do versus config.get('theme')?", "reveal": "Bracket indexing raises a KeyError; .get() returns None."},
+          {"at": 300, "prompt": "counts already has 'apples': 4. What happens with counts.setdefault('apples', 0)?", "reveal": "Nothing changes — setdefault only writes when the key is missing, so the value stays 4."}
+        ],
+        "quiz": [
+          {"question": "d = {'a': 1}. What does d.get('b', 0) return?", "options": ["1", "None", "0", "It raises a KeyError"], "answer": 2, "explanation": ".get() returns the default 0 because 'b' is missing — no KeyError is raised."},
+          {"question": "Which method adds a key only if it is missing?", "options": [".get()", ".update()", ".setdefault()", ".pop()"], "answer": 2, "explanation": ".setdefault() inserts the default only when the key is absent and leaves existing values untouched."},
+          {"question": "Which line safely removes a key that might not exist?", "options": ["del d['k']", "d.pop('k', None)", "d.remove('k')", "d.delete('k')"], "answer": 1, "explanation": ".pop() with a default removes the key or returns the default; del would raise a KeyError, and remove/delete don't exist on dicts."}
+        ],
+        "flashcards": [
+          {"front": "dict.get(key, default)", "back": "Returns the value for key, or default if the key is missing"},
+          {"front": "dict.setdefault(key, default)", "back": "Inserts default only if key is missing; returns the value"},
+          {"front": "dict.update(other)", "back": "Merges another dict in, overwriting values for shared keys"},
+          {"front": "dict.pop(key, default)", "back": "Removes key and returns its value, or default if missing"}
+        ],
+        "deliverable": "Write a function that merges two settings dicts, where the second dict's values win on shared keys."
+      },
+      {
+        "id": "l3",
+        "order": 3,
+        "title": "Looping: items, keys, values",
+        "skill": "Iterate dicts with keys(), values(), items()",
+        "creatorName": "Tom Okafor (sample persona)",
+        "creatorCredentials": "CS instructor · intro programming (illustrative)",
+        "durationSec": 540,
+        "videoUrl": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+        "videoLicense": "CC0 stock footage (MDN) — placeholder for real lesson video",
+        "pacing": "balanced",
+        "actionDensity": 4.8,
+        "efficacySeed": {"quizAttempts": 176, "quizPasses": 149, "deliverables": 108},
+        "chapters": [
+          {"start": 0, "end": 20, "title": "Channel intro", "kind": "intro", "fluff": true},
+          {"start": 20, "end": 160, "title": "Keys and values views", "kind": "instruction", "fluff": false},
+          {"start": 160, "end": 200, "title": "Sponsor message", "kind": "sponsor", "fluff": true},
+          {"start": 200, "end": 460, "title": "Items and iteration patterns", "kind": "instruction", "fluff": false},
+          {"start": 460, "end": 540, "title": "Subscribe for lesson 4", "kind": "cta", "fluff": true}
+        ],
+        "transcript": [
+          {"start": 20, "end": 40, "text": "Iteration means visiting each entry in a dictionary one at a time — and Python gives you three views for it."},
+          {"start": 40, "end": 62, "text": "Looping over a dictionary directly walks its keys: for k in prices gives you each key."},
+          {"start": 62, "end": 84, "text": "For keys explicitly, use prices.keys(). For values only, prices.values()."},
+          {"start": 84, "end": 108, "text": "Inside a keys loop you can still fetch values: for k in prices: print(k, prices[k])."},
+          {"start": 108, "end": 132, "text": "That double lookup is fine for small dictionaries, but there is a cleaner way coming up next."},
+          {"start": 132, "end": 160, "text": "Note the views update live: add a key and the keys view reflects it immediately."},
+          {"start": 200, "end": 225, "text": "The most common pattern is .items(), which yields key-value pairs together: for k, v in prices.items()."},
+          {"start": 225, "end": 250, "text": "Tuple unpacking does the magic: each pair from .items() splits into k and v automatically."},
+          {"start": 250, "end": 275, "text": "Need both the key and the value? .items() is your default choice — it is readable and fast."},
+          {"start": 275, "end": 300, "text": "Sorting a dictionary for display? sorted(prices.items()) orders the pairs by key before the loop."},
+          {"start": 300, "end": 330, "text": "Enumerate adds a counter: for i, (k, v) in enumerate(prices.items()) numbers each entry."},
+          {"start": 330, "end": 360, "text": "Golden rule: never add or remove keys while iterating. Build a new dictionary instead."},
+          {"start": 360, "end": 390, "text": "Dictionaries preserve insertion order, so your loops run in the order entries were added."},
+          {"start": 390, "end": 420, "text": "Pick the right view — keys, values, or items — and say exactly what your loop needs."},
+          {"start": 420, "end": 460, "text": "Up next: building dictionaries in a single line with comprehensions."}
+        ],
+        "recallTriggers": [
+          {"at": 230, "prompt": "Quick check — 'for k in prices' loops over what: keys, values, or pairs?", "reveal": "Keys. Use .items() when you want the key-value pairs."}
+        ],
+        "quiz": [
+          {"question": "What does 'for k in d' iterate over?", "options": ["Values", "Keys", "Key-value pairs", "Indices"], "answer": 1, "explanation": "Iterating a dict directly (or via .keys()) yields its keys."},
+          {"question": "What does d.items() yield on each iteration?", "options": ["Keys only", "Values only", "Key-value tuples", "Integer indices"], "answer": 2, "explanation": ".items() yields (key, value) tuples, which you typically unpack as 'for k, v in d.items()'."},
+          {"question": "What is the safe way to filter entries while looping?", "options": ["Delete keys inside the loop", "Build a new dict with the entries you want", "Modify keys in place", "Break on the first match"], "answer": 1, "explanation": "Mutating a dict's keys during iteration raises an error; build a new dictionary instead."}
+        ],
+        "flashcards": [
+          {"front": "dict.keys()", "back": "A live view of the dictionary's keys"},
+          {"front": "dict.values()", "back": "A live view of the dictionary's values"},
+          {"front": "dict.items()", "back": "Yields (key, value) pairs for iteration"},
+          {"front": "iteration order", "back": "Dictionaries iterate in insertion order"}
+        ],
+        "deliverable": "Print every product and price from a dict, formatted as 'Product: $price'."
+      },
+      {
+        "id": "l4",
+        "order": 4,
+        "title": "Dict comprehensions",
+        "skill": "Build dicts with comprehensions and conditionals",
+        "creatorName": "Dana Kim (sample persona)",
+        "creatorCredentials": "Data engineer · pandas and pipelines (illustrative)",
+        "durationSec": 600,
+        "videoUrl": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+        "videoLicense": "CC0 stock footage (MDN) — placeholder for real lesson video",
+        "pacing": "deep",
+        "actionDensity": 3.9,
+        "efficacySeed": {"quizAttempts": 158, "quizPasses": 117, "deliverables": 84},
+        "chapters": [
+          {"start": 0, "end": 20, "title": "Channel intro", "kind": "intro", "fluff": true},
+          {"start": 20, "end": 180, "title": "Comprehension basics", "kind": "instruction", "fluff": false},
+          {"start": 180, "end": 220, "title": "Sponsor message", "kind": "sponsor", "fluff": true},
+          {"start": 220, "end": 500, "title": "Conditionals and nested comprehensions", "kind": "instruction", "fluff": false},
+          {"start": 500, "end": 600, "title": "Outro and practice prompt", "kind": "outro", "fluff": true}
+        ],
+        "transcript": [
+          {"start": 20, "end": 45, "text": "A comprehension builds a whole dictionary in one expressive line: {k: v for k, v in pairs}."},
+          {"start": 45, "end": 70, "text": "Read it inside out: the left side {k: v} is the output shape, and the for clause feeds it entries."},
+          {"start": 70, "end": 95, "text": "Start from a list: squares = {n: n*n for n in range(5)} maps each number to its square."},
+          {"start": 95, "end": 120, "text": "Transform an existing dictionary: doubled = {k: v*2 for k, v in prices.items()}."},
+          {"start": 120, "end": 145, "text": "Or swap keys and values: flipped = {v: k for k, v in mapping.items()} — when the values are unique."},
+          {"start": 145, "end": 170, "text": "Careful with that flip: duplicate values collapse, and only the last key survives."},
+          {"start": 170, "end": 180, "text": "Comprehensions are expressions — they return a new dictionary and leave the original untouched."},
+          {"start": 220, "end": 250, "text": "Add a condition to filter: evens = {n: n*n for n in range(10) if n % 2 == 0}."},
+          {"start": 250, "end": 280, "text": "The if clause sits at the end and keeps only entries that pass the test."},
+          {"start": 280, "end": 310, "text": "You can also transform conditionally: labels = {k: ('big' if v > 100 else 'small') for k, v in prices.items()}."},
+          {"start": 310, "end": 340, "text": "That inline if-else is a ternary expression: value-if-true, if, condition, else, value-if-false."},
+          {"start": 340, "end": 370, "text": "Nesting is possible: {r: {c: r*c for c in cols} for r in rows} builds a multiplication table — but keep it shallow."},
+          {"start": 370, "end": 400, "text": "Two levels of comprehension in one line is the readability limit. Beyond that, write a loop."},
+          {"start": 400, "end": 430, "text": "Comprehensions shine for mapping and filtering; loops win for complex logic and side effects."},
+          {"start": 430, "end": 460, "text": "Every comprehension you write replaces four to six lines of loop code with one clear intent."},
+          {"start": 460, "end": 500, "text": "Practice translating loops to comprehensions and back — fluency in both directions is the goal."}
+        ],
+        "recallTriggers": [
+          {"at": 100, "prompt": "squares = {n: n*n for n in range(5)}. What is squares[3]?", "reveal": "9 — the key 3 maps to its square."},
+          {"at": 320, "prompt": "In {k: v for k, v in d.items() if v > 0}, what does the if clause do?", "reveal": "It filters — only pairs whose value is positive are included."}
+        ],
+        "quiz": [
+          {"question": "{n: n*n for n in range(3)} evaluates to what?", "options": ["{0: 0, 1: 1, 2: 4}", "{0: 1, 1: 2, 2: 3}", "[0, 1, 4]", "{'n': 'n*n'}"], "answer": 0, "explanation": "Each n maps to n*n: 0→0, 1→1, 2→4, all inside one dictionary."},
+          {"question": "What does the trailing 'if' in a dict comprehension do?", "options": ["Raises on a false condition", "Filters entries", "Breaks the loop", "Sorts the keys"], "answer": 1, "explanation": "The trailing if keeps only entries that satisfy the condition."},
+          {"question": "Flipping a dict with {v: k for k, v in d.items()} is risky when…", "options": ["The keys are strings", "The values are unique", "The values repeat", "The dict is empty"], "answer": 2, "explanation": "Duplicate values collapse into one key — only the last key for each value survives."},
+          {"question": "When should you prefer a plain loop over a comprehension?", "options": ["Always — loops are faster", "For complex logic or side effects", "For building small dicts", "For filtering values"], "answer": 1, "explanation": "Comprehensions are for mapping and filtering; complex logic and side effects belong in a readable loop."}
+        ],
+        "flashcards": [
+          {"front": "dict comprehension syntax", "back": "{key_expr: value_expr for ...}"},
+          {"front": "filter clause", "back": "A trailing 'if' keeps only entries that pass the test"},
+          {"front": "ternary expression", "back": "x if condition else y — value chosen inline by a condition"},
+          {"front": "nested comprehension", "back": "A comprehension inside a comprehension, e.g. dicts of dicts"},
+          {"front": ".items() in comprehensions", "back": "The usual source of key-value pairs: {k: v for k, v in d.items()}"}
+        ],
+        "deliverable": "Convert a list of (name, score) tuples into a dict of names scoring above 70."
+      },
+      {
+        "id": "l5",
+        "order": 5,
+        "title": "Dicts in data pipelines",
+        "skill": "Count with dicts and round-trip JSON",
+        "creatorName": "Luis Mendez (sample persona)",
+        "creatorCredentials": "API developer · data integration (illustrative)",
+        "durationSec": 540,
+        "videoUrl": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+        "videoLicense": "CC0 stock footage (MDN) — placeholder for real lesson video",
+        "pacing": "quick",
+        "actionDensity": 5.6,
+        "efficacySeed": {"quizAttempts": 143, "quizPasses": 122, "deliverables": 97},
+        "chapters": [
+          {"start": 0, "end": 20, "title": "Channel intro", "kind": "intro", "fluff": true},
+          {"start": 20, "end": 170, "title": "Counting with dicts", "kind": "instruction", "fluff": false},
+          {"start": 170, "end": 210, "title": "Sponsor message", "kind": "sponsor", "fluff": true},
+          {"start": 210, "end": 470, "title": "JSON round-trip", "kind": "instruction", "fluff": false},
+          {"start": 470, "end": 540, "title": "Course wrap and CTA", "kind": "cta", "fluff": true}
+        ],
+        "transcript": [
+          {"start": 20, "end": 42, "text": "Counting is the classic dictionary pipeline: tally words, votes, or events with one compact loop."},
+          {"start": 42, "end": 64, "text": "The pattern is: for word in words: counts[word] = counts.get(word, 0) + 1."},
+          {"start": 64, "end": 86, "text": ".get(word, 0) handles the first sighting gracefully — no KeyError, no special case."},
+          {"start": 86, "end": 110, "text": "That two-liner replaces a whole if-else block. It is the counting idiom every Pythonista knows."},
+          {"start": 110, "end": 134, "text": "Grouping works the same way: for name, team in roster: groups.setdefault(team, []).append(name)."},
+          {"start": 134, "end": 160, "text": "setdefault hands you the list for a team — existing or brand new — and you append in one step."},
+          {"start": 160, "end": 170, "text": "Counting and grouping: two pipelines, one dictionary pattern."},
+          {"start": 210, "end": 235, "text": "JSON is the lingua franca of APIs, and it maps beautifully onto Python dictionaries."},
+          {"start": 235, "end": 260, "text": "json.loads() parses a JSON string into a dict: data = json.loads('{\"city\": \"Lyon\"}')."},
+          {"start": 260, "end": 285, "text": "JSON objects become dictionaries, JSON arrays become lists, and the structure nests just like Python."},
+          {"start": 285, "end": 310, "text": "Going the other way, json.dumps() serializes a dict back to a JSON string for an API request."},
+          {"start": 310, "end": 335, "text": "Mind the type gaps: JSON has no tuples or sets, and its keys must be strings."},
+          {"start": 335, "end": 360, "text": "Dates are another gap — serialize them as ISO strings like '2026-09-19' and parse them back yourself."},
+          {"start": 360, "end": 385, "text": "A full round-trip: fetch JSON from an API, loads() it into dicts, count or group with your pipeline, dumps() the result."},
+          {"start": 385, "end": 410, "text": "That loop — API to dict to JSON — is the backbone of countless real data workflows."},
+          {"start": 410, "end": 440, "text": "You started with key-value basics; you are leaving with a pipeline pattern used in production."},
+          {"start": 440, "end": 470, "text": "Keep building: grab data from a public API, count something real, and ship the summary as JSON."}
+        ],
+        "recallTriggers": [
+          {"at": 90, "prompt": "words = ['a', 'b', 'a']. After the counting loop, what is counts['a']?", "reveal": "2 — .get('a', 0) starts at 0, then each sighting adds 1."}
+        ],
+        "quiz": [
+          {"question": "In the counting idiom, what does counts.get(word, 0) + 1 accomplish?", "options": ["Raises KeyError on first sighting", "Starts missing words at 0", "Sorts the counts", "Deletes the word"], "answer": 1, "explanation": ".get(word, 0) returns 0 for a first sighting, so adding 1 initializes the count without a KeyError."},
+          {"question": "json.loads() converts a JSON string into…", "options": ["Always a list", "Python objects — a dict for JSON objects", "A tuple", "Raw bytes"], "answer": 1, "explanation": "json.loads() parses JSON text into Python objects; a JSON object becomes a dictionary."},
+          {"question": "Which statement about JSON is NOT true?", "options": ["JSON keys must be strings", "JSON objects map to Python dicts", "JSON keys can be tuples", "JSON nests like Python dicts"], "answer": 2, "explanation": "JSON object keys must be strings — tuples are not valid JSON keys."}
+        ],
+        "flashcards": [
+          {"front": "counting idiom", "back": "d[k] = d.get(k, 0) + 1"},
+          {"front": "json.loads", "back": "Parses a JSON string into Python objects"},
+          {"front": "json.dumps", "back": "Serializes Python objects into a JSON string"},
+          {"front": "API", "back": "An interface for requesting data or actions from software"}
+        ],
+        "deliverable": "Fetch a JSON list of posts from any public API, count posts per userId with a dict, and print the top 3."
+      }
+    ],
+    "skillTree": {"nodes": [
+      {"id": "py-basics", "title": "Python Basics", "prerequisites": [], "seedStatus": "completed"},
+      {"id": "py-dicts", "title": "Dictionaries", "prerequisites": ["py-basics"], "seedStatus": "in-progress"},
+      {"id": "py-dict-methods", "title": "Dict Methods & Patterns", "prerequisites": ["py-dicts"], "seedStatus": "locked"},
+      {"id": "py-pipelines", "title": "Dicts in Data Pipelines", "prerequisites": ["py-dict-methods"], "seedStatus": "locked"}
+    ]}
+  }
+}
