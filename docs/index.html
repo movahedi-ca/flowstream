@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FlowStream — Focused Video Learning</title>
+  <meta name="description" content="FlowStream: a productivity-only, distraction-free video learning platform. No feed, no clickbait — just focused learning.">
+  <link rel="stylesheet" href="styles.css">
+  <!-- CodeMirror 5 (python mode) for the sandbox editor; plain-textarea fallback if the CDN is unreachable -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/theme/material-darker.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/python/python.min.js" defer></script>
+</head>
+<body>
+
+  <header class="topbar">
+    <a class="brand" id="brandHome" href="#/" aria-label="FlowStream home">
+      <span class="brand-mark">FS</span><span>FlowStream</span>
+    </a>
+    <nav class="topnav">
+      <a href="#/" id="navLibrary">Library</a>
+      <a href="#/tree" id="navTree">Skill Tree</a>
+    </nav>
+    <div class="topbar-spacer"></div>
+    <div class="profile-select">
+      <label for="profileSelect">Background</label>
+      <select id="profileSelect" aria-label="Jargon analogy background profile"></select>
+    </div>
+    <button class="credits-chip" id="creditsChip" title="Open Ulysses Pacts">◉ <span id="creditsBalance">100</span> credits</button>
+    <button class="icon-btn" id="focusBtn" title="Start a focus session">⏱ Focus</button>
+    <button class="icon-btn" id="settingsBtn" title="Settings" aria-label="Settings">⚙</button>
+  </header>
+
+  <div class="sample-banner" id="sampleBanner" hidden></div>
+
+  <main id="app">
+    <!-- Landing view: big blank search bar + Learning Tracks cards. No feed, ever. -->
+    <section class="view" id="view-landing" aria-label="Library">
+      <div class="landing-hero">
+        <h1 id="curriculumTitle">FlowStream</h1>
+        <p id="curriculumTagline">Distraction-free video learning.</p>
+        <div class="search-wrap">
+          <input class="search-bar" id="intentSearch" type="text"
+                 placeholder="What do you want to learn?  e.g. “python dictionaries”"
+                 autocomplete="off" aria-label="Search lessons by intent">
+          <div class="pacing-row">
+            <span class="end-label">Quick Fix</span>
+            <input type="range" class="pacing-slider" id="pacingSlider" min="0" max="3" step="1" value="0"
+                   aria-label="Intent depth: quick fix to deep dive">
+            <span class="end-label">Deep Dive</span>
+            <span class="pacing-value" id="pacingValue">Any depth</span>
+          </div>
+        </div>
+        <div class="results" id="searchResults" aria-live="polite"></div>
+      </div>
+      <div class="tracks-section">
+        <h2>Learning Tracks</h2>
+        <div class="tracks-grid" id="tracksGrid"></div>
+      </div>
+    </section>
+
+    <!-- Lesson player view -->
+    <section class="view" id="view-lesson" aria-label="Lesson player"></section>
+
+    <!-- Skill tree view -->
+    <section class="view" id="view-tree" aria-label="Skill tree">
+      <h1>Skill Tree</h1>
+      <p style="color:var(--text-dim)">Complete every quiz in a lesson to mark its skill node complete. Locked nodes need their prerequisites first.</p>
+      <div class="tree" id="skillTree"></div>
+    </section>
+  </main>
+
+  <footer>
+    FlowStream · sample content only · your data never leaves this device (localStorage)
+  </footer>
+
+  <!-- Focus session modal -->
+  <div class="modal-backdrop" id="modalFocus">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="focusTitle">
+      <h2 id="focusTitle">Start a Focus Session</h2>
+      <div class="field">
+        <label for="focusMinutes">Session length (minutes)</label>
+        <input type="number" id="focusMinutes" min="1" max="240" value="25">
+      </div>
+      <div class="field">
+        <label for="focusIntent">Intent (optional — biases the lesson queue)</label>
+        <input type="text" id="focusIntent" placeholder="e.g. python dictionaries">
+      </div>
+      <p class="hint" id="focusQueuePreview"></p>
+      <div class="modal-actions">
+        <button class="btn secondary" data-close>Cancel</button>
+        <button class="btn" id="focusStartBtn">Start session</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Devil's advocate modal -->
+  <div class="modal-backdrop" id="modalRecall">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="recallTitle">
+      <h2 id="recallTitle">⏸ Devil's Advocate</h2>
+      <p id="recallPrompt" style="font-size:1.05rem"></p>
+      <div class="reveal-box" id="recallRevealBox"><strong>Answer:</strong> <span id="recallReveal"></span></div>
+      <p class="hint">Answered this session: <span id="recallCount">0</span></p>
+      <div class="modal-actions">
+        <button class="btn secondary" id="recallRevealBtn">Reveal answer</button>
+        <button class="btn" id="recallResumeBtn">Resume ▶</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ulysses pacts modal -->
+  <div class="modal-backdrop" id="modalPact">
+    <div class="modal wide" role="dialog" aria-modal="true" aria-labelledby="pactTitle">
+      <h2 id="pactTitle">Ulysses Pacts</h2>
+      <p class="hint">Stake Focus Credits on finishing the curriculum (all quizzes passed) by a deadline.
+        Win: credits returned + honor badge. Lose: the stake moves to the educational-charity pool.</p>
+      <div class="field">
+        <label for="pactAmount">Stake amount (credits — balance: <span id="pactBalance">100</span>)</label>
+        <input type="number" id="pactAmount" min="1" max="100" value="25">
+      </div>
+      <div class="field">
+        <label for="pactDeadline">Deadline</label>
+        <input type="date" id="pactDeadline">
+      </div>
+      <div class="modal-actions">
+        <button class="btn secondary" id="pactCheckBtn">Check deadlines now</button>
+        <button class="btn secondary" data-close>Close</button>
+        <button class="btn" id="pactStakeBtn">Stake credits</button>
+      </div>
+      <div class="ledger" id="pactLedger"></div>
+      <div class="roadmap-note disabled-block" aria-disabled="true">
+        <strong>Extension point (roadmap):</strong> crypto / fiat wallet staking.
+        This section is intentionally disabled — FlowStream will never fake a wallet integration.
+      </div>
+    </div>
+  </div>
+
+  <!-- Settings modal -->
+  <div class="modal-backdrop" id="modalSettings">
+    <div class="modal wide" role="dialog" aria-modal="true" aria-labelledby="settingsTitle">
+      <h2 id="settingsTitle">Settings</h2>
+      <h3 style="font-size:1rem;margin:1rem 0 0.5rem">Jargon translator — bring your own key (optional)</h3>
+      <p class="hint">When a transcript word is <em>not</em> in the built-in glossary, FlowStream can ask an
+        OpenAI-compatible endpoint to define it. Your key is stored <strong>only</strong> in this browser's
+        localStorage and is sent <strong>only</strong> to the endpoint below — never anywhere else.</p>
+      <div class="field">
+        <label for="byokBase">Base URL (OpenAI-compatible)</label>
+        <input type="url" id="byokBase" placeholder="https://api.openai.com/v1">
+      </div>
+      <div class="field">
+        <label for="byokModel">Model</label>
+        <input type="text" id="byokModel" placeholder="gpt-4o-mini">
+      </div>
+      <div class="field">
+        <label for="byokKey">API key</label>
+        <input type="password" id="byokKey" placeholder="sk-…" autocomplete="off">
+      </div>
+      <div class="roadmap-note">
+        <strong>Roadmap: biofeedback sync (Apple Watch / Oura) — extension point.</strong><br>
+        Not implemented. A future version could dim distractions when your heart-rate variability
+        drops during focus sessions. No sensor data is collected today.
+      </div>
+      <div class="modal-actions">
+        <button class="btn danger" id="wipeDataBtn">Erase all local data</button>
+        <button class="btn secondary" data-close>Close</button>
+        <button class="btn" id="settingsSaveBtn">Save settings</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Session summary modal -->
+  <div class="modal-backdrop" id="modalSummary">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="summaryTitle">
+      <h2 id="summaryTitle">🎯 Session complete</h2>
+      <div id="summaryBody"></div>
+      <div class="modal-actions">
+        <button class="btn" data-close>Done</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="focus-chip" id="focusChip" title="Focus session — click to end early">
+    ⏱ <span id="focusTime">25:00</span> <span class="end">✕ end</span>
+  </div>
+
+  <div id="toasts" aria-live="polite"></div>
+  <div id="jargonTip" class="jargon-tip" hidden></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
